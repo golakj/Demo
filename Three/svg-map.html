@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My first Three.js app</title>
+	<style>
+		body { margin: 0; }
+		canvas { width: 100%; height: 100% }
+		@charset "utf-8";
+		/* CSS Document */
+		*{ margin:0; padding:0;}
+		body, html { height:100%; width:100%;}
+		form { height:100%; }
+		body{ background:#fff; font-family:'museo300', Arial; font-size:14px; color:#666666;}
+		article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block;}
+		img { max-width: 100%; height: auto; border:0; width: auto\9; /* ie8 */}
+		a{ text-decoration:none; outline:0; border:0;}
+		.clearfix:after {visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+		.clearfix { display: inline-block; }
+		* html .clearfix { height: 1%; }
+		.clearfix { display: block; }
+		.clr{ clear:both;}
+		.push { height:90px;}
+		ul, li{ list-style-type:none;}
+		h1, h2, h3, h4, h5, h6{ font-weight:normal; margin: 0; padding: 0;}
+		table{ border-collapse:collapse;}
+		.fLeft{ float:left;}
+		.fRight{ float:right;}
+		.alignRight{ text-align:right;}
+		.alignLeft{ text-align:left;}
+		.alignCenter{ text-align:center;}
+		.positionRelative{ position:relative;}
+		a:hover, a:focus{ color: #fff; text-decoration: none;}
+
+
+		#container{ max-width: 945px; margin: 0 auto;}
+		.header{ background: #eee; border-bottom: 1px #ddd solid;}
+		.tabs{ font-size: 0;}
+		.tabs li{ display: inline-block; font-size: 14px;}
+		.tabs li a{ display: block; color: #000; padding: 10px 20px;}
+		.tabs li a:hover, .tabs li a.active{ background: #ddd;}
+
+		.mapCont{ display: none;}
+		.tooltip{ background: #eee; padding: 10px; display: none; position: absolute;}
+
+
+		.st0{fill:transparent;}
+		.st1{fill:none;stroke:#FFFFFF;stroke-width:3;stroke-miterlimit:10;}
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<header class="header">
+			<ul class="tabs">
+				<li><a class="active" href="#mapDelhi">Delhi</a></li>
+				<li><a href="#mapGurgaon">Gurgaon</a></li>
+				<li><a href="#mapKapashera">Kapashera</a></li>
+			</ul>
+		</header>
+		<div class="mapContOuter">
+			<div class="mapCont clearfix" id="mapDelhi">
+				<svg version="1.1" id="svg_mapDelhi" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 514">
+					<image style="overflow:visible;" width="945" height="514" id="XMLID_2_" xlink:href="images/office_Map.jpg">
+					</image>
+					<polyline class="st1" points="371.7,43.3 209.8,145.1 324.4,214.3 "/>
+					<line class="st1" x1="391.7" y1="257" x2="454.4" y2="293.4"/>
+					<polyline class="st1" points="535.4,334.3 559,348.9 547.2,362.5 "/>
+
+					<a xlink:href="#area1" class="annotation">
+						<rect x="302.5" y="106" class="st0" width="56.4" height="55.5"/></rect>
+					</a>
+					<a xlink:href="#area2" class="annotation">
+						<rect x="454.4" y="145.1" class="st0" width="76.4" height="115.5"/></rect>
+					</a>
+					<a xlink:href="#area3" class="annotation">
+						<rect x="338" y="210.6" class="st0" width="48.2" height="106.4"/></rect>
+					</a>
+				</svg>
+			</div>
+			<div class="mapCont clearfix" id="mapGurgaon">
+				<svg version="1.1" id="svg_mapGurgaon" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 514">
+					<image style="overflow:visible;" width="945" height="514" id="XMLID_2_" xlink:href="images/office_Map.jpg">
+					</image>
+					<polyline class="st1" points="371.7,43.3 209.8,145.1 324.4,214.3 "/>
+					<line class="st1" x1="391.7" y1="257" x2="454.4" y2="293.4"/>
+					<polyline class="st1" points="535.4,334.3 559,348.9 547.2,362.5 "/>
+
+					<a xlink:href="#area1" class="annotation">
+						<rect x="302.5" y="106" class="st0" width="56.4" height="55.5"/></rect>
+					</a>
+					<a xlink:href="#area2" class="annotation">
+						<rect x="454.4" y="145.1" class="st0" width="76.4" height="115.5"/></rect>
+					</a>
+					<a xlink:href="#area3" class="annotation">
+						<rect x="338" y="210.6" class="st0" width="48.2" height="106.4"/></rect>
+					</a>
+				</svg>
+			</div>
+			<div class="mapCont clearfix" id="mapKapashera">
+				<svg version="1.1" id="svg_mapKapashera" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 945 514">
+					<image style="overflow:visible;" width="945" height="514" id="XMLID_2_" xlink:href="images/office_Map.jpg">
+					</image>
+					<polyline class="st1" points="371.7,43.3 209.8,145.1 324.4,214.3 "/>
+					<line class="st1" x1="391.7" y1="257" x2="454.4" y2="293.4"/>
+					<polyline class="st1" points="535.4,334.3 559,348.9 547.2,362.5 "/>
+
+					<a xlink:href="#area1" class="annotation">
+						<rect x="302.5" y="106" class="st0" width="56.4" height="55.5"/></rect>
+					</a>
+					<a xlink:href="#area2" class="annotation">
+						<rect x="454.4" y="145.1" class="st0" width="76.4" height="115.5"/></rect>
+					</a>
+					<a xlink:href="#area3" class="annotation">
+						<rect x="338" y="210.6" class="st0" width="48.2" height="106.4"/></rect>
+					</a>
+				</svg>
+			</div>
+		</div>
+		
+
+		<div class="tooltip" id="area1">
+	    	<h3>Area1</h3>
+	    </div>
+	    <div class="tooltip" id="area2">
+	    	<h3>Area2</h3>
+	    </div>
+	    <div class="tooltip" id="area3">
+	    	<h3>Area3</h3>
+	    </div>
+    </div>
+
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/imageMapResizer.min.js"></script>
+    <script src="js/vivus.js"></script>
+    <script>
+    	function tooltip(){
+			$(".annotation").each(function(){
+				$(this).on("click", function(event){
+					var target = $(this).attr("xlink:href");
+					var leftCord = parseInt($(this).offset().left+30);
+					var topCord = parseInt($(this).offset().top-30);
+
+					$(target).css({left:leftCord, top:topCord});
+
+					$(".tooltip").fadeOut(300);
+					var display = $(target).css("display");
+					if(display == "none"){
+						$(target).fadeIn(300);
+					}
+					else{
+						$(target).fadeOut(300);
+					}
+					
+
+					event.stopPropagation();
+					return false;
+				});
+			});
+			$(document).mouseup(function (e){
+				var container = $(".tooltip");
+				if (!container.is(e.target) && container.has(e.target).length === 0){
+					container.fadeOut(300);
+				}
+			});
+		}
+
+		function svgMapDelhi(){
+			var a = new Vivus('svg_mapDelhi', {type: 'scenario-sync', duration: 100, forceRender: false, start:"autostart"});
+		}
+		function svgMapGurgaon(){
+			var a = new Vivus('svg_mapGurgaon', {type: 'scenario-sync', duration: 100, forceRender: false, start:"autostart"});
+		}
+		function svgMapKapashera(){
+			var a = new Vivus('svg_mapKapashera', {type: 'scenario-sync', duration: 100, forceRender: false, start:"autostart"});
+		}
+
+		var funcArray = [svgMapDelhi, svgMapGurgaon, svgMapKapashera];
+		
+		$(function() {
+			$(".mapCont").eq(0).fadeIn(0, function(){
+				funcArray[0]();
+			});
+			$(".tabs li a").each(function(){
+				$(this).on("click", function(){
+					var index = $(this).closest("li").index();
+					var targetMap = $(this).attr("href");
+					$(".active").removeClass("active");
+					$(this).addClass("active");
+					$(".tooltip").fadeOut(300);
+					$(".mapCont").fadeOut(0);
+					$(targetMap).fadeIn(0, function(){
+						funcArray[index]();
+					});
+
+					return false;
+				});
+			});
+			
+
+			tooltip();
+
+		});
+
+		$(window).on("resize", function(){
+			$(".tooltip").fadeOut(300);
+		});
+	</script>
+</body>
+</html>
